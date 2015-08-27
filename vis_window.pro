@@ -1,4 +1,4 @@
-function vis_window,elatdeg,elondeg
+function vis_window,elondeg,elatdeg
 ;; Calculates the visibility as a function of equatorial latitude
 ;; input latitude in degrees
 ;; 
@@ -38,9 +38,10 @@ case 1 of
    end
 endcase
 
-visTimes = visTimes - !pi/2E ;; since Sun at 0 deg in Spring Eq
-visTimes = visTimes / (2E * !pi) mod 1.0;; from radians to years
-if visTimes[3] LT visTimes[2] then visTimes[3] = visTimes[3] + 1.0
+visTimes = visTimes - 3E * !pi/2E ;; since Sun at 0 deg in Spring Eq
+visTimes = (visTimes / (2E * !pi)) ;mod 1.0;; from radians to years
+
+;if visTimes[3] LT visTimes[2] then visTimes[3] = visTimes[3] + 1.0
 return,visTimes
 
 end
