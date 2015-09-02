@@ -19,19 +19,22 @@ for i=0l,nobj-1l do begin
    
 ;   visLen = vis_eq(elLatdeg)
 ;   print,'Visible for '+strtrim(visLen,1)+' days'
-;   print,'Ecliptic lon lat = '+strtrim(elLongdeg,1)+$
-;   ' '+strtrim(elLatdeg,1)
-   visArr = vis_window(elLatdeg[i],elLongdeg[i])
+   print,name[i],format='(A," ",$)'
+   print,'Ecliptic lon lat = '+strtrim(elLongdeg[i],1)+$
+   ' '+strtrim(elLatdeg[i],1)
+   visArr = vis_window(elLongdeg[i],elLatdeg[i])
 ;   print,visarr
    if i EQ 0 then begin
       plot,[lookyear - 0.5,lookyear+1],[0,0],yrange=[0,1 + nobj],$
            xtitle='Year',ytitle='Obj Num'
    endif
    for j=-1l,1l do begin
-      oplot,visArr[0:1] + lookyear + float(j),[1,1]+i,color=mycol('red')
-      oplot,visArr[2:3] + lookyear + float(j),[1,1]+i,color=mycol('red')
+      oplot,visArr[0:1] + lookyear + float(j),[1,1]+i,$
+            color=mycol('red'),thick=3
+      oplot,visArr[2:3] + lookyear + float(j),[1,1]+i,$
+            color=mycol('red'),thick=3
    endfor
-   xyouts,lookyear + 0.5E,1 + i,name[i]
+   xyouts,lookyear + 0.5E,1 + i + 0.1,name[i]
 endfor
 
 end
