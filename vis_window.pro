@@ -4,7 +4,7 @@ function vis_window,elondeg,elatdeg
 ;; 
 
 elatrad = abs(elatdeg) * !pi / 180E ;; also take abs because symmetric
-elonrad = abs(elondeg) * !Pi / 180E
+elonrad = elondeg * !Pi / 180E
 ;; Year length
 yr = 365.24E
 
@@ -16,7 +16,7 @@ sinmaxtipA = sin(45E * !PI/180E)
 yrConversion = yr / (2E * !PI) ;; conversion from angle to yr
 
 case 1 of
-   elatdeg LT 45: begin
+   abs(elatdeg) LT 45: begin
       alpha = asin(sinmaxtipT/cos(elatrad))
       beta = asin(sinmaxtipA/cos(elatrad))
       visTimes = ([!pi/2E - alpha,$
@@ -25,7 +25,7 @@ case 1 of
                    3E * !pi/2E + alpha] + elonrad)
       visLen = 2E * (alpha + beta) * yrConversion
    end
-   elatdeg GE 45 and elatdeg LT 85: begin
+   abs(elatdeg) GE 45 and abs(elatdeg) LT 85: begin
       alpha = asin(sinmaxtipT/cos(elatrad))
       visTimes = ([!pi/2E - alpha,$
                    3E * !pi/2E + alpha,$
@@ -33,7 +33,7 @@ case 1 of
                    !values.f_nan]+ elonrad)
       visLen = (!PI + 2E * alpha) * yrConversion
    end
-   elatdeg GE 85: begin
+   abs(elatdeg) GE 85: begin
       vistimes = [0, 2E * !pi,!values.f_nan,!values.f_nan]
    end
 endcase

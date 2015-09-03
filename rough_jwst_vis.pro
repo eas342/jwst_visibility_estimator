@@ -16,7 +16,7 @@ if n_elements(name) NE nobj then name=strarr(nobj)
 for i=0l,nobj-1l do begin
    
    euler,ra * 15E,dec,elLongdeg,elLatdeg,select=3
-   
+
 ;   visLen = vis_eq(elLatdeg)
 ;   print,'Visible for '+strtrim(visLen,1)+' days'
    print,name[i],format='(A," ",$)'
@@ -34,6 +34,7 @@ for i=0l,nobj-1l do begin
       oplot,visArr[2:3] + lookyear + float(j),[1,1]+i,$
             color=mycol('red'),thick=3
    endfor
+
    xyouts,lookyear + 0.5E,1 + i + 0.1,name[i]
 endfor
 

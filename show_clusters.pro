@@ -9,7 +9,7 @@ device,encapsulated=1,/helvetica,$
        filename=plotprenm+'.eps'
 device,xsize=14,ysize=10,decomposed=1,/color
 
-dat = ev_delim_read('star_cluster_summary.csv',delim=',')
+dat = ev_delim_read('cluster_lists/star_cluster_summary.csv',delim=',')
 rough_jwst_vis,dat.ra_deg /15E,dat.dec_deg,dat.name
 
 device,/close
