@@ -1,7 +1,8 @@
 ;; Rough calculator for JWST visibility
 ;; Input the RA in decimal hours and declination in decimal degrees
 ;; Versioni 1 - circular Earth orbit
-pro rough_jwst_vis,ra,dec,name
+;; herchel - use Herschel's field of regard for testing consistency
+pro rough_jwst_vis,ra,dec,name,herschel=herschel
 
 ;; Maybe later if I get fancier (circular Earth orbit for now)
 ;yr = '2015'
@@ -22,7 +23,7 @@ for i=0l,nobj-1l do begin
    print,name[i],format='(A," ",$)'
    print,'Ecliptic lon lat = '+strtrim(elLongdeg[i],1)+$
    ' '+strtrim(elLatdeg[i],1)
-   visArr = vis_window(elLongdeg[i],elLatdeg[i])
+   visArr = vis_window(elLongdeg[i],elLatdeg[i],herschel=herschel)
 ;   print,visarr
    if i EQ 0 then begin
       plot,[lookyear - 0.5,lookyear+1],[0,0],yrange=[0,1 + nobj],$

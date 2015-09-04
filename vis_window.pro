@@ -1,17 +1,25 @@
-function vis_window,elondeg,elatdeg
+function vis_window,elondeg,elatdeg,herschel=herschel
 ;; Calculates the visibility as a function of equatorial latitude
 ;; input latitude in degrees
-;; 
+;; herschel - use Herschel's field of regard for testing consistency
 
 elatrad = abs(elatdeg) * !pi / 180E ;; also take abs because symmetric
 elonrad = elondeg * !Pi / 180E
 ;; Year length
 yr = 365.24E
 
-;; Maximum tip toward sun from orthogonal
-sinmaxtipT = sin(5E * !PI/180E)
-;; Maximum tip away from sun from orthogonal
-sinmaxtipA = sin(45E * !PI/180E)
+if keyword_set(herschel) then begin
+   sinmaxtipT = sin(29.2E * !PI/180E) ;; Herschel Value !!!! (For testing)
+   sinmaxtipA = sin(29.2E * !PI/180E) ;; Herschel Value !!!! (For testing)
+;   elonrad = elonrad - 0.17 ;; for some reason I have a 10 day offset !!
+;   elonrad = elonrad - 2E * !PI * 10E /yr ;; for some reason I have a 10 day offset !!
+   
+endif else begin
+   ;; Maximum tip toward sun from orthogonal
+   sinmaxtipT = sin(5E * !PI/180E)
+   ;; Maximum tip away from sun from orthogonal
+   sinmaxtipA = sin(45E * !PI/180E)
+endelse
 
 yrConversion = yr / (2E * !PI) ;; conversion from angle to yr
 
