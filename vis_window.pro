@@ -51,7 +51,7 @@ visTimes = (visTimes / (2E * !pi)) ;; from radians to years
 ;; since Sun at 0 deg in Spring Eq 3/21, 10 days off from the 1/4
 ;; point of the year. Also it's 0.5 yr off to look opposite the sun
 visTimes = visTimes - 0.25E - 10E/yr 
-print,visTimes
+
 ;if visTimes[3] LT visTimes[2] then visTimes[3] = visTimes[3] + 1.0
 return,visTimes
 
