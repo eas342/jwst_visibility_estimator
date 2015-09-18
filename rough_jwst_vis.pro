@@ -29,7 +29,7 @@ for i=0l,nobj-1l do begin
       plot,[lookyear - 0.5,lookyear+1],[0,0],yrange=[0,1 + nobj],$
            xtitle='Year',ytitle='Obj Num'
    endif
-   for j=-1l,1l do begin
+   for j=-2l,1l do begin
       oplot,visArr[0:1] + lookyear + float(j),[1,1]+i,$
             color=mycol('red'),thick=3
       oplot,visArr[2:3] + lookyear + float(j),[1,1]+i,$
