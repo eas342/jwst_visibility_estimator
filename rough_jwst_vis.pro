@@ -31,9 +31,9 @@ for i=0l,nobj-1l do begin
    endif
    for j=-2l,1l do begin
       oplot,visArr[0:1] + lookyear + float(j),[1,1]+i,$
-            color=mycol('red'),thick=3
+            color=255,thick=3
       oplot,visArr[2:3] + lookyear + float(j),[1,1]+i,$
-            color=mycol('red'),thick=3
+            color=255,thick=3
    endfor
 
    xyouts,lookyear + 0.5E,1 + i + 0.1,name[i]
