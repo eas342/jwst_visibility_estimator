@@ -1,4 +1,8 @@
 # jwst_visibility_estimator
+
+## **Note**: This is only an gross very approximate tool made before the official version was available.
+## Please use the Space Telescope jwst visibility tool: <a href="">https://jwst-docs.stsci.edu/display/JPP/JWST+General+Target+Visibility+Tool+Help</a>
+
 Calculates an estimate for JWST visibility for a list of objects.
 
 The only needed files are rough_jwst_vis.pro and vis_window.pro. Make sure they are in the same directory.
